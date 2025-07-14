@@ -1,0 +1,29 @@
+body {
+  font-family: 'Arial Narrow Bold', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+nav {
+  background-color: #222;
+  padding: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #4dff82;
+}
