@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Chose GameDev: Here's my Plan (and What Scares Me Most) | Ivan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+
+    /* ── PAGE LAYOUT ── */
+    .post-page {
+      padding-top: 0;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* ── HERO BANNER ── */
+    .post-hero {
+      background: linear-gradient(160deg, #1c1730 0%, #13111a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 8rem 2rem 3.5rem;
+      text-align: center;
+    }
+    .post-hero .section-label { justify-content: center; display: flex; }
+    .post-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      max-width: 900px;
+      margin: 0.5rem auto 1rem;
+      line-height: 1.3;
+    }
+    .post-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .post-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── BODY LAYOUT: article + TOC ── */
+    .post-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── ARTICLE ── */
+    .post-content h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 2.5rem 0 0.75rem;
+      padding-top: 0.5rem;
+      scroll-margin-top: 6rem;
+    }
+    .post-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-hi);
+      margin: 1.75rem 0 0.5rem;
+      scroll-margin-top: 6rem;
+    }
+    .post-content p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.1rem;
+    }
+    .post-content ul,
+    .post-content ol {
+      padding-left: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+    .post-content li {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+    .post-content a {
+      color: var(--accent-hi);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .post-content a:hover { opacity: 0.75; }
+
+    /* inline code */
+    .post-content code {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.15em 0.45em;
+      border-radius: 3px;
+      color: var(--accent-hi);
+    }
+
+    /* code block */
+    .post-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+    }
+    .post-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    /* blockquote */
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.5rem 0;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* divider */
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc {
+      position: sticky;
+      top: 6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1rem;
+    }
+    .toc-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-hi);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .toc-list a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      display: block;
+      padding: 0.3rem 0.5rem;
+      border-radius: 3px;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .toc-list a:hover {
+      color: var(--white);
+      background: rgba(98,114,164,0.08);
+    }
+    .toc-list a.active {
+      color: var(--accent-hi);
+      border-left-color: var(--accent-hi);
+      background: rgba(255,121,198,0.06);
+    }
+    /* h3 sub-items indent */
+    .toc-list .toc-sub a {
+      padding-left: 1.1rem;
+      font-size: 0.68rem;
+    }
+
+    /* ── POST FOOTER NAV ── */
+    .post-nav {
+      padding: 2rem 0 0;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .post-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .post-nav a:hover { color: var(--accent-hi); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .post-body {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .toc { position: static; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../../index.html" class="logo">ID<span>_</span></a>
+    <ul>
+      <li><a href="../../index.html#hero">Home</a></li>
+      <li><a href="../../index.html#projects">Projects</a></li>
+      <li><a href="../index.html">Blog</a></li>
+      <li><a href="../../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-page">
+
+    <!-- HERO -->
+    <div class="post-hero">
+      <div class="section-label">/blog</div>
+      <h1>I Chose GameDev: Here's my Plan (and What Scares Me Most)</h1>
+      <div class="post-meta">
+        <span>📅 2 August, 2025</span>
+        <span>✍ Ivan</span>
+        <span>⏱ ~3 min read</span>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="post-body">
+
+      <!-- ARTICLE CONTENT -->
+      <article class="post-content">
+
+        <h2 id="intro">Introduction</h2>
+        <p>
+          It all started with a simple idea that has been driving me forward to this day.
+          Write your intro here — why you got into game development, what sparked it.
+        </p>
+
+        <h2 id="beginnings">Where It All Started</h2>
+        <p>
+          Talk about your first encounter with games or programming. What was the moment
+          you decided this was what you wanted to do?
+        </p>
+        <p>
+          You can add more paragraphs here. Keep it personal and honest —
+          recruiters and readers appreciate authenticity over a polished PR version.
+        </p>
+
+        <h2 id="learning">Learning the Craft</h2>
+        <h3 id="unreal">Unreal Engine</h3>
+        <p>
+          Describe how you started learning Unreal. What resources helped most?
+          What was the first thing you built?
+        </p>
+
+        <h3 id="cpp">C++ and Gameplay Systems</h3>
+        <p>
+          How did you approach learning C++ in the context of game development?
+          What challenges did you face?
+        </p>
+
+        <blockquote>
+          "A quote or thought that inspired you along the way."
+        </blockquote>
+
+        <h2 id="projects">University Projects</h2>
+        <p>
+          Talk about the prototypes and projects you built during university.
+          What did you learn from each one? What would you do differently?
+        </p>
+        <ul>
+          <li>Project one — what it was, what you learned</li>
+          <li>Project two — mechanics, challenges</li>
+          <li>Project three — what stood out</li>
+        </ul>
+
+        <h2 id="now">Where I Am Now</h2>
+        <p>
+          Current focus, what you're working on, what you want to build next.
+          Keep it forward-looking.
+        </p>
+
+        <hr>
+
+        <!-- POST FOOTER NAV -->
+        <div class="post-nav">
+          <a href="../index.html">← Back to Blog</a>
+          <a href="#">Next Post →</a>
+        </div>
+
+      </article>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc">
+        <div class="toc-title">On this page</div>
+        <ul class="toc-list">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#beginnings">Where It All Started</a></li>
+          <li><a href="#learning">Learning the Craft</a></li>
+          <li class="toc-sub"><a href="#unreal">— Unreal Engine</a></li>
+          <li class="toc-sub"><a href="#cpp">— C++ and Gameplay</a></li>
+          <li><a href="#projects">University Projects</a></li>
+          <li><a href="#now">Where I Am Now</a></li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="../../index.html" class="logo">ID<span>_</span></a>
+    <p>© 2025 Ivan. Built with GitHub Pages.</p>
+  </footer>
+
+  <!-- TOC active highlight on scroll -->
+  <script>
+    const headings = Array.from(document.querySelectorAll('.post-content h2[id], .post-content h3[id]'));
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    function setActive(id) {
+      tocLinks.forEach(link => link.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+
+    // Click — immediately highlight
+    tocLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.getAttribute('href').slice(1);
+        setActive(id);
+      });
+    });
+
+    // Scroll — find the last heading above the middle of the viewport
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const windowH = window.innerHeight;
+
+      // If near bottom of page — activate last heading
+      if (window.innerHeight + scrollY >= document.body.scrollHeight - 10) {
+        setActive(headings[headings.length - 1].id);
+        return;
+      }
+
+      let current = headings[0];
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top <= windowH * 0.3) {
+          current = h;
+        }
+      }
+      if (current) setActive(current.id);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // run on load
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="../../js/script.js"></script>
+</body>
+</html>

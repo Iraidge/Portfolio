@@ -79,7 +79,7 @@ nav ul a {
   letter-spacing: 0.05em;
   transition: color 0.2s;
 }
-nav ul a:hover { color: var(--accent); }
+nav ul a:hover { color: var(--accent-hi); }
 
 /* =====================
    HERO
@@ -407,6 +407,23 @@ section { padding: 6rem 0; }
   color: var(--accent);
   display: block;
   margin-bottom: 0.75rem;
+}
+
+.blog-card-thumb {
+  position: relative;
+}
+.badge-new {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: #ff79c6;
+  color: #cdd6f4;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
 }
 
 /* =====================

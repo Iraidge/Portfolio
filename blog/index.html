@@ -31,27 +31,27 @@
       background: var(--bg);
     }
     .blog-posts {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      max-width: 760px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 100%;
     }
     .post-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 220px 1fr;
+      display: flex;
+      flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .post-card:hover { border-color: var(--accent); transform: translateX(4px); }
+    .post-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
     .post-thumb {
-      aspect-ratio: unset;
-      min-height: 140px;
-      background: linear-gradient(135deg, #1a2530, #0f1922);
-    }
+    aspect-ratio: 16/9;
+    min-height: unset;
+    background: linear-gradient(135deg, #1e1a2e, #13111a);
+  }
     .post-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
     .post-body { padding: 1.25rem 1.5rem; }
@@ -78,6 +78,7 @@
     @media (max-width: 600px) {
       .post-card { grid-template-columns: 1fr; }
       .post-thumb { min-height: 120px; }
+      .blog-posts { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -87,7 +88,7 @@
     <a href="../index.html" class="logo">ID<span>_</span></a>
     <ul>
       <li><a href="../index.html">Home</a></li>
-      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="index.html">Blog</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
@@ -106,7 +107,7 @@
       <div class="blog-posts">
 
         <!-- Пост — дублируй блок для каждой статьи -->
-        <a href="posts/roadmap.html" class="post-card">
+        <a href="posts/i-chose-gamedev.html" class="post-card">
           <div class="post-thumb"></div>
           <div class="post-body">
             <span class="post-date">2 August, 2025</span>
@@ -127,7 +128,6 @@
           </div>
         </a>
         -->
-
       </div>
     </div>
   </div>
@@ -137,6 +137,6 @@
     <p>© 2025 Ivan. Built with GitHub Pages.</p>
   </footer>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 </body>
 </html>
