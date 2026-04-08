@@ -1,26 +1,21 @@
-let current = 0;
-let target = 0;
-const ease = 0.08; // скорость догонки — меньше = медленнее
+document.addEventListener('DOMContentLoaded', () => {
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+  });
 
-function lerp(start, end, factor) {
-  return start + (end - start) * factor;
-}
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-function update() {
-  target = window.scrollY;
-  current = lerp(current, target, ease);
-
-  document.body.style.transform = `translateY(${-(current)}px)`;
-  requestAnimationFrame(update);
-}
-
-// Фиксируем body и даём странице знать реальную высоту
-document.body.style.position = 'fixed';
-document.body.style.width = '100%';
-document.body.style.top = '0';
-
-const scrollHeight = document.body.scrollHeight;
-document.documentElement.style.height = scrollHeight + 'px';
-
-update();
-console.log("JS подключен");
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) lenis.scrollTo(target);
+    });
+  });
+});
