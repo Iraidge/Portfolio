@@ -1,41 +1,141 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
-<script src="/Portfolio/js/script.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
-<link rel="manifest" href="/site.webmanifest">
-<meta charset="UTF-8">
-<title>BlogID</title>
-<link rel="stylesheet" href="/Portfolio/css/style.css">
-<link rel="stylesheet" href="/Portfolio/css/blog.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Ivan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Blog-specific overrides */
+    .blog-page-header {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(160deg, #141920 0%, #0d0f12 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-page-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .blog-page-header p {
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+
+    .blog-list {
+      padding: 4rem 0 6rem;
+      background: var(--bg);
+    }
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 760px;
+    }
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .post-card:hover { border-color: var(--accent); transform: translateX(4px); }
+
+    .post-thumb {
+      aspect-ratio: unset;
+      min-height: 140px;
+      background: linear-gradient(135deg, #1a2530, #0f1922);
+    }
+    .post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .post-body { padding: 1.25rem 1.5rem; }
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .post-body h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .post-body p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .post-card { grid-template-columns: 1fr; }
+      .post-thumb { min-height: 120px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="Logo">
-            <a href="/Portfolio/index.html"><img src="/Portfolio/favicon/IDLogo.svg" alt="My Logo"></a> <!--Logo in corner of the screen.-->
-            </div>
-            <ul><a href="/Portfolio/index.html"><<<<</a></ul>
-        </nav>
-    </header>
-    <main>
-    <h1>/Blog.</h1>
-    <div class="card">
-    <div class="card-header"></div>
-    <div class="card-body">
-      <p class="date">Posted on 2 August, 2025</p>
-      <h2 class="title">My Roadmap in GameDev: Why I Chose This Path.</h2>
-      <p class="description">
-        It all started with a simple idea that has been driving me forward to this day. 
-        <a href="/Portfolio/blog/GameDevRoadmap.html" class="read-more">Read More...</a>
-      </p>
+
+  <nav>
+    <a href="../index.html" class="logo">ID<span>_</span></a>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="blog-page-header">
+    <div class="container">
+      <div class="section-label">/blog</div>
+      <h1>Blog</h1>
+      <p>Thoughts on game development, tools, and the process.</p>
     </div>
   </div>
-    </main>
+
+  <div class="blog-list">
+    <div class="container">
+      <div class="blog-posts">
+
+        <!-- Пост — дублируй блок для каждой статьи -->
+        <a href="posts/roadmap.html" class="post-card">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <span class="post-date">2 August, 2025</span>
+            <h2>My Roadmap in GameDev: Why I Chose This Path.</h2>
+            <p>It all started with a simple idea that has been driving me forward to this day.</p>
+            <span class="read-more">Read More →</span>
+          </div>
+        </a>
+
+        <!-- Пример второго поста (закомментирован пока нет контента)
+        <a href="posts/second-post.html" class="post-card">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <span class="post-date">Coming soon</span>
+            <h2>Next Post Title</h2>
+            <p>Short description.</p>
+            <span class="read-more">Read More →</span>
+          </div>
+        </a>
+        -->
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="../index.html" class="logo">ID<span>_</span></a>
+    <p>© 2025 Ivan. Built with GitHub Pages.</p>
+  </footer>
+ <script src="../js/script.js"></script>
 </body>
+</html>
